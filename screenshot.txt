@@ -1,0 +1,39 @@
+#paste and run rhino and run it and select the folder consisting the cad files
+
+import rhinoscriptsyntax as rs
+import os
+
+def batch_screenshot_iso():
+    folder = rs.BrowseForFolder("Select folder with Prong files")
+    if not folder: return
+
+    files = [f for f in os.listdir(folder) if f.endswith(".3dm")]
+    output_folder = os.path.join(folder, "screenshots_iso") # New folder
+    if not os.path.exists(output_folder):
+        os.makedirs(output_folder)
+
+    rs.EnableRedraw(False)
+
+    for filename in files:
+        full_path = os.path.join(folder, filename)
+        rs.Command('_-Open "{}" _No'.format(full_path))
+        
+        # --- CRITICAL CHANGE: SET ISOMETRIC VIEW ---
+        rs.Command('_-Viewport _Set _Perspective')
+        rs.Command('_-View _Isometric _NE') # North-East Isometric view
+        rs.Command('_-Zoom _Extents')
+        
+        # Set to "Rendered" or "Shaded" to see solid geometry
+        rs.Command('_-SetDisplayMode _Mode _Rendered') 
+        
+        image_name = filename.replace(".3dm", ".jpg")
+        save_path = os.path.join(output_folder, image_name)
+        
+        # Capture
+        rs.Command('_-ViewCaptureToFile "{}" _Width=800 _Height=800 _Enter'.format(save_path))
+        print("Captured Iso: " + filename)
+
+    rs.EnableRedraw(True)
+    print("Done. Check 'screenshots_iso' folder.")
+
+batch_screenshot_iso()

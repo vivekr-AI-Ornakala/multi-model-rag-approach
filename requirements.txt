@@ -1,0 +1,17 @@
+# AI & LLM SDKs
+google-genai>=0.3.0
+openai>=1.0.0
+
+# Vector Database & Embeddings
+chromadb>=0.4.22
+open-clip-torch>=2.24.0
+sentence-transformers>=2.3.1
+
+# Image Processing & Data
+Pillow>=10.2.0
+numpy>=1.26.0
+pandas>=2.2.0
+
+# Utilities
+requests>=2.31.0
+tqdm>=4.66.0
