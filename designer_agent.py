@@ -9,7 +9,7 @@ from PIL import Image
 from google import genai
 from google.genai import types
 
-API_KEY = "AIzaSyAPv06sqvhgfeHoMYeJVlkKnO6jTWkh8u4"
+API_KEY = ""
 LIBRARY_PATH = r"C:\Users\vivek\Desktop\code space\RAG\cad_library"
 
 client_ai = genai.Client(api_key=API_KEY)
@@ -231,4 +231,5 @@ if __name__ == "__main__":
             if dream_stone and os.path.exists(dream_stone): os.remove(dream_stone)
             if dream_head and os.path.exists(dream_head): os.remove(dream_head)
             if f_shank and dream_shank and os.path.exists(dream_shank): os.remove(dream_shank)
+
         except: pass
