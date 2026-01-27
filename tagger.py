@@ -7,7 +7,7 @@ import requests
 
 
 LIBRARY_ROOT = r"C:\Users\vivek\Desktop\code space\RAG\cad_library" #main cad file path
-API_KEY = "AIzaSyAPv06sqvhgfeHoMYeJVlkKnO6jTWkh8u4"
+API_KEY = ""
 MODEL_NAME = "gemini-2.5-flash"
 
 def analyze_image(image_path, category):
@@ -99,4 +99,5 @@ def main():
     print(f"\n--- Done! Database saved to {output_csv} ---")
 
 if __name__ == "__main__":
+
     main()
